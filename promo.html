@@ -24,6 +24,11 @@
                 <img src="Logo.png" alt="Kasama FMA Logo" class="h-12 w-auto object-contain">
                 <span class="heading-font font-bold text-xl tracking-wider uppercase hidden sm:block">Kasama <span class="text-[#fdcb39]">FMA</span></span>
             </a>
+            <button id="mobileMenuButton" type="button" class="md:hidden inline-flex items-center justify-center rounded-sm border border-zinc-800 bg-zinc-950/90 p-3 text-[#fdf7eb] hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#fdcb39]" aria-expanded="false" aria-label="Toggle menu">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
             <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-gray-300">
                 <a href="index.html" class="hover:text-[#fdcb39] transition-colors">Home</a>
                 <a href="about.html" class="hover:text-[#fdcb39] transition-colors">About</a>
@@ -31,10 +36,20 @@
                 <a href="gallery.html" class="hover:text-[#fdcb39] transition-colors">Gallery</a>
                 <a href="location.html" class="hover:text-[#fdcb39] transition-colors">Location</a>
             </nav>
-            <div>
+            <div class="hidden md:block">
                 <a href="index.html#contact" class="bg-[#fdcb39] hover:bg-[#e0b434] text-black font-bold uppercase text-xs tracking-widest px-6 py-3 rounded-none transition-all duration-300 inline-block transform hover:-translate-y-0.5">
                     Inquire Now
                 </a>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden border-t border-zinc-800 bg-[#201c13]/98 md:hidden">
+            <div class="flex flex-col px-6 py-4 gap-4">
+                <a href="index.html" class="text-[#fdf7eb] uppercase tracking-widest font-semibold hover:text-[#fdcb39]">Home</a>
+                <a href="about.html" class="text-[#fdf7eb] uppercase tracking-widest font-semibold hover:text-[#fdcb39]">About</a>
+                <a href="gallery.html" class="text-[#fdf7eb] uppercase tracking-widest font-semibold hover:text-[#fdcb39]">Gallery</a>
+                <a href="promo.html" class="text-[#fdf7eb] uppercase tracking-widest font-semibold hover:text-[#fdcb39]">Promo</a>
+                <a href="location.html" class="text-[#fdf7eb] uppercase tracking-widest font-semibold hover:text-[#fdcb39]">Location</a>
+                <a href="index.html#contact" class="rounded-none bg-[#fdcb39] py-3 text-center text-black font-bold uppercase tracking-widest hover:bg-[#e0b434]">Inquire Now</a>
             </div>
         </div>
     </header>
@@ -77,5 +92,16 @@
             </div>
         </section>
     </main>
+    <script>
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
+            });
+        }
+    </script>
 </body>
 </html>
