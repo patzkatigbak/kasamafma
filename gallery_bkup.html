@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Kasama FMA</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#201c13] text-[#fdf7eb] selection:bg-[#fdcb39] selection:text-[#201c13]">
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#201c13]/95 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="Logo.png" alt="Kasama FMA Logo" class="h-12 w-auto object-contain">
+                <span class="heading-font font-bold text-xl tracking-wider uppercase hidden sm:block">Kasama <span class="text-[#fdcb39]">FMA</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-gray-300">
+                <a href="index.html" class="hover:text-[#fdcb39] transition-colors">Home</a>
+                <a href="about.html" class="hover:text-[#fdcb39] transition-colors">About</a>
+                <a href="promo.html" class="hover:text-[#fdcb39] transition-colors">Promo</a>
+                <a href="gallery.html" class="hover:text-[#fdcb39] transition-colors">Gallery</a>
+                <a href="location.html" class="hover:text-[#fdcb39] transition-colors">Location</a>
+            </nav>
+            <div>
+                <a href="index.html#contact" class="bg-[#fdcb39] hover:bg-[#e0b434] text-black font-bold uppercase text-xs tracking-widest px-6 py-3 rounded-none transition-all duration-300 inline-block transform hover:-translate-y-0.5">
+                    Inquire Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-28">
+        <section class="max-w-6xl mx-auto px-6 py-24 text-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-4 py-1.5 text-xs font-bold tracking-widest uppercase text-[#fdcb39]">
+                    <span class="w-2 h-2 rounded-full bg-[#fdcb39]"></span>
+                    Gallery
+                </div>
+                <h1 class="heading-font text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+                    Kasama FMA Gallery
+                </h1>
+                <p class="text-[#f4e9dc] text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
+                    Browse our live training photos. The owner drops files into Google Drive, and they appear here instantly—newest first.
+                </p>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-6 py-12">
+            <!-- Dynamic Gallery Container -->
+            <div id="google-drive-gallery" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="col-span-full text-center py-12 text-zinc-400">
+                    <p class="text-lg animate-pulse">Loading training photos...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Configuration
+        const API_KEY = 'YOUR_GOOGLE_DRIVE_API_KEY';
+        const FOLDER_ID = 'YOUR_GOOGLE_DRIVE_FOLDER_ID';
+
+        // URL pulls files from your folder matching image types, sorted newest first
+        //!!!Patz - add the google drive api. What ever the images saved in the specific folder, it will be displayed in this Gallery page
+        
+        const apiURL = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents+and+mimeType+contains+'image/'&orderBy=createdTime desc&key=${API_KEY}&fields=files(id,name)`;
+
+        //Patz end of update
+        async function loadGallery() {
+            const container = document.getElementById('google-drive-gallery');
+            
+            try {
+                const response = await fetch(apiURL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const data = await response.json();
+                const files = data.files;
+
+                if (!files || files.length === 0) {
+                    container.innerHTML = `<div class="col-span-full text-center py-12 text-zinc-500">No photos found in the folder.</div>`;
+                    return;
+                }
+
+                // Clear out loading indicator
+                container.innerHTML = '';
+
+                files.forEach(file => {
+                    // Google's direct file rendering CDN endpoint
+                    const imageUrl = `https://lh3.googleusercontent.com/d/${file.id}`;
+
+                    // Create the wrapper card
+                    const card = document.createElement('div');
+                    card.className = "rounded-3xl overflow-hidden bg-zinc-950 border border-zinc-800 group relative";
+
+                    // Create the image element
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+                    img.alt = "Kasama FMA Training";
+                    img.className = "w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105 opacity-0 transition-opacity duration-300";
+                    
+                    // Smooth fade-in behavior once images download
+                    img.onload = function() {
+                        this.classList.remove('opacity-0');
+                    };
+
+                    card.appendChild(img);
+                    container.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error('Error fetching from Google Drive:', error);
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-red-400">
+                        <p>Unable to load the gallery images right now.</p>
+                        <p>Patz! Update the API key and folder ID.!!!!!!</p>
+                        <p class="text-xs text-zinc-500 mt-2">Check console logs to verify your API configurations.</p>
+                    </div>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadGallery);
+    </script>
+</body>
+</html>
