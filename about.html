@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Kasama FMA</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Urbanist:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Urbanist', sans-serif;
+        }
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .text-grunge {
+            background: linear-gradient(135deg, #fdcb39 0%, #d9a52f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-[#201c13] text-[#fdf7eb] selection:bg-[#fdcb39] selection:text-[#201c13]">
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#201c13]/95 backdrop-blur-md border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="logo.png" alt="Kasama FMA Logo" class="h-12 w-auto object-contain">
+                <span class="heading-font font-bold text-xl tracking-wider uppercase hidden sm:block">Kasama <span class="text-[#fdcb39]">FMA</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-gray-300">
+                <a href="index.html" class="hover:text-[#fdcb39] transition-colors">Home</a>
+                <a href="about.html" class="hover:text-[#fdcb39] transition-colors">About</a>
+                <a href="index.html#gallery" class="hover:text-[#fdcb39] transition-colors">Gallery</a>
+                <a href="index.html#promo" class="hover:text-[#fdcb39] transition-colors">Promo</a>
+                <a href="index.html#location" class="hover:text-[#fdcb39] transition-colors">Location</a>
+            </nav>
+            <div>
+                <a href="index.html#contact" class="bg-[#fdcb39] hover:bg-[#e0b434] text-black font-bold uppercase text-xs tracking-widest px-6 py-3 rounded-none transition-all duration-300 inline-block transform hover:-translate-y-0.5">
+                    Inquire Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-28">
+        <section class="max-w-6xl mx-auto px-6 py-24">
+            <div class="space-y-6 text-center">
+                <div class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-4 py-1.5 text-xs font-bold tracking-widest uppercase text-[#fdcb39]">
+                    <span class="w-2 h-2 rounded-full bg-[#fdcb39] animate-pulse"></span>
+                    Learn the System
+                </div>
+                <h1 class="heading-font text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+                    About Kasama FMA
+                </h1>
+                <p class="text-[#f4e9dc] text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
+                    Explore the roots of Filipino martial arts and discover how Kasama FMA blends tradition, modern training, and community to build strength, discipline, and cultural pride.
+                </p>
+            </div>
+        </section>
+
+        <section class="max-w-5xl mx-auto px-6 py-16 border-t border-[#2c261a]">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="heading-font text-3xl font-bold text-[#fdf7eb] tracking-wide uppercase">What is Kali?</h2>
+                    <div class="w-20 h-1 bg-[#fdcb39] mt-4 mb-6"></div>
+                    <p class="text-[#f4e9dc] text-lg leading-relaxed tracking-wide">
+                        Kali is the Filipino martial art of weapon-based fighting, focusing on sticks, blades, and empty-hand techniques. It teaches flow, timing, body mechanics, and awareness so students can move with confidence in both combat and self-defense.
+                    </p>
+                    <p class="text-[#f4e9dc] text-lg leading-relaxed tracking-wide">
+                        Training in Kali builds coordination, reflexes, and mental clarity — while honoring the Filipino warrior traditions that shaped the art.
+                    </p>
+                </div>
+
+                <div>
+                    <h2 class="heading-font text-3xl font-bold text-[#fdf7eb] tracking-wide uppercase">What is Kasama FMA?</h2>
+                    <div class="w-20 h-1 bg-[#fdcb39] mt-4 mb-6"></div>
+                    <p class="text-[#f4e9dc] text-lg leading-relaxed tracking-wide">
+                        Kasama FMA is a Filipino martial arts academy built around partnership, respect, and shared growth. “Kasama” means companion or partner, and our training emphasizes working together to preserve tradition while developing real-world skills.
+                    </p>
+                    <p class="text-[#f4e9dc] text-lg leading-relaxed tracking-wide">
+                        We welcome adults, youth, beginners, and experienced students alike — offering weapon training, empty-hand defense, and a supportive environment for every martial artist.
+                    </p>
+                </div>
+
+                <div class="space-y-10 pt-12">
+                    <div>
+                        <h2 class="heading-font text-2xl md:text-3xl font-bold text-[#fdf7eb] tracking-wide uppercase">How Do We Teach the iKali Program?</h2>
+                        <p class="text-[#f4e9dc] text-lg leading-relaxed mt-4">
+                            Learn directly from Tuhon Apolo Ladra in this video explanation of the iKali training methodology.
+                        </p>
+                        <div class="mt-6 aspect-[16/9] bg-black overflow-hidden rounded-lg shadow-xl">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/isFK_9kudtM?start=2" title="How Do We Teach the iKali Program? | Tuhon Apolo Ladra" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="heading-font text-2xl md:text-3xl font-bold text-[#fdf7eb] tracking-wide uppercase">Checkout a Master Class Session | Blade | iKali</h2>
+                        <p class="text-[#f4e9dc] text-lg leading-relaxed mt-4">
+                            Watch a master class session to see Blade and iKali training in action, with practical skill development and flow drills.
+                        </p>
+                        <div class="mt-6 aspect-[16/9] bg-black overflow-hidden rounded-lg shadow-xl">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/jWdsflh9biE" title="Checkout a Master Class Session | Blade | iKali" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
